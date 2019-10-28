@@ -24,7 +24,7 @@ function pageOnClick (info, tab){
     console.log("item " + info.menuItemId + " was clicked");
     console.log("info: " + JSON.stringify(info));
     console.log("tab: " + JSON.stringify(tab));
-    let date1 = new Date;
+    let date1 = new Date();
     let seconds1 = date1.getTime().toString();
     chrome.storage.sync.set({[seconds1]: [info["pageUrl"], 'page']}, function() {
       console.log('pageUrl is set to ' + info["pageUrl"]);
@@ -38,7 +38,7 @@ function pageOnClick (info, tab){
     console.log("item " + info.menuItemId + " was clicked");
     console.log("info: " + JSON.stringify(info));
     console.log("tab: " + JSON.stringify(tab));
-    let date1 = new Date;
+    let date1 = new Date();
     let seconds1 = date1.getTime().toString();
     chrome.storage.sync.set({[seconds1]: [info["selectionText"], 'selection']}, function() {
       console.log('selectionText is set to ' + info["selectionText"]);
@@ -52,7 +52,7 @@ function pageOnClick (info, tab){
     console.log("item " + info.menuItemId + " was clicked");
     console.log("info: " + JSON.stringify(info));
     console.log("tab: " + JSON.stringify(tab));
-    let date1 = new Date;
+    let date1 = new Date();
     let seconds1 = date1.getTime().toString();
     chrome.storage.sync.set({[seconds1]: [info["linkUrl"], 'link']}, function() {
       console.log('link is set to ' + info["linkUrl"]);
@@ -66,7 +66,7 @@ function pageOnClick (info, tab){
     console.log("item " + info.menuItemId + " was clicked");
     console.log("info: " + JSON.stringify(info));
     console.log("tab: " + JSON.stringify(tab));
-    let date1 = new Date;
+    let date1 = new Date();
     let seconds1 = date1.getTime().toString();
     chrome.storage.sync.set({[seconds1]: [info["srcUrl"], 'image']}, function() {
       console.log('image is set to ' + info["srcUrl"]);
@@ -80,7 +80,7 @@ function pageOnClick (info, tab){
     console.log("item " + info.menuItemId + " was clicked");
     console.log("info: " + JSON.stringify(info));
     console.log("tab: " + JSON.stringify(tab));
-    let date1 = new Date;
+    let date1 = new Date();
     let seconds1 = date1.getTime().toString();
     chrome.storage.sync.set({[seconds1]: [info["srcUrl"], 'audio']}, function() {
       console.log('audio is set to ' + info["srcUrl"]);
@@ -150,3 +150,28 @@ var audioId = chrome.contextMenus.create({
   "contexts": ['audio'], 
   "onclick": audioOnClick
 })
+
+
+chrome.storage.onChanged.addListener(function(changes, namespace) {
+  let newArr = []
+  for (let key in changes){
+    newArr.push([key, changes[key].newValue])
+  }
+  let sortedArr = newArr.sort((a, b) => b[0] - a[0]);
+
+  console.log('New value is %s %s %s !!', sortedArr[0][0], sortedArr[0][1][0], sortedArr[0][1][1])
+  for (var key in changes) {
+    var storageChange = changes[key];
+    console.log('Storage key "%s" in namespace "%s" changed. ' +
+                'Old value was "%s", new value is "%s".',
+                key,
+                namespace,
+                storageChange.oldValue,
+                storageChange.newValue);
+  }
+  if(sortedArr[0][1][0]){
+    chrome.browserAction.setBadgeText({ text: sortedArr[0][1][0] })
+  }
+
+});
+
