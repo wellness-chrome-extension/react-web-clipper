@@ -1,6 +1,7 @@
 .App {
-  text-align: center;
-  width: 400px
+  width: 400px;
+  height: 300px;
+  overflow: scroll
 }
 
 .App-logo {
@@ -20,4 +21,22 @@
 
 .App-link {
   color: #09d3ac;
+}
+
+.List-item {
+  width: 350px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+
+.title1 {
+  border-bottom: 1px solid grey;
+}
+
+.Item-container {
+  display: flex;
+  border-bottom: 1px solid rgb(172, 172, 172);
+  height: 30px
 }

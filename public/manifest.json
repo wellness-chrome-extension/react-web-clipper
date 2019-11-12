@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
 
-  "name": "My Extension",
+  "name": "Web Clipper",
   "description": "This extension is a starting point to create a real Chrome extension",
   "version": "1.0.0",
 
@@ -13,9 +13,9 @@
     "scripts": ["app/background.js"]
   },
   "icons": {
-    "16": "logo192.png",
-    "48": "logo192.png",
-    "128": "logo192.png"
+    "16": "logo.png",
+    "48": "logo.png",
+    "128": "logo.png"
   },
   "content_security_policy": "script-src 'self' 'sha256-31wM8eF+W2EIVBBtylCWWu4oRMtgZN1NAG5wAtANfWE='; object-src 'self'",
   "permissions": ["activeTab", "contextMenus", "storage"]
