@@ -1,5 +1,5 @@
 .App {
-  width: 400px;
+  width: 500px;
   height: 300px;
   overflow: scroll
 }
@@ -23,20 +23,67 @@
   color: #09d3ac;
 }
 
-.List-item {
-  width: 350px;
+
+.List-item-container{
+  display:flex;
+}
+
+.List-item-container > div{
+  padding-left: 10px;
+  width: 420px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+
+
+.Expanded-list-item-container{
+  display: flex;
+}
+
+.Expanded-list-item-container > div{
+  padding-left: 10px;
+  width: 420px;
+}
+
+.Expanded-list-item-container > span{
+  /* background-color: yellow; */
+  /* align-self: center; */
+  transform: rotate(180deg);
+}
+
+
+
+.arrow{
+  /* font-size: 25px; */
+  padding-right: 5px;
+  padding-left: 5px;
+  cursor: pointer;
+}
+
+.star{
+  cursor: pointer
+}
+
+.remove{
+  border-radius: 5px;
+  background-color: rgb(233, 233, 233)
 
 }
 
 .title1 {
   border-bottom: 1px solid grey;
+  padding-left: 10px;
+  padding-bottom: 5px;
+
 }
 
 .Item-container {
   display: flex;
   border-bottom: 1px solid rgb(172, 172, 172);
-  height: 30px
+  /* height: 30px */
 }
+
+

@@ -22,11 +22,22 @@ class App extends Component {
             <div id="title" class="title1">Saved Items</div>
             <div id="itemList" class="list-group"></div>
           </Tab>
-          <Tab eventKey="profile" title="Starred Items">
+          <Tab eventKey="starred" title="Starred Items">
             <div id="starredTitle" class="title1">Starred Items</div>
             <div id="starredItems" class="list-group"></div>
+            <div id='test3'></div>
+          </Tab>
+          <Tab eventKey="test" title="Enter Items">
+            <div id="test1" class="title1">Enter a new item below</div>
+            <form id="item-form">
+              <label>
+                <input type="text" name="name" />
+              </label>
+              <input type="submit" value="Submit" />
+            </form>
           </Tab>
         </Tabs>
+        <script src="../public/app/script.js"></script>
       </div>
     );
   }

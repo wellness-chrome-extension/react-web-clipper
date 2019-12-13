@@ -14,26 +14,26 @@ document.addEventListener("DOMContentLoaded", function() {
       //may need to put ids here
       if (urlValues.includes(sortedArr[i][1][1])) {
         currentItem +=
-          "<div class='Item-container'> <div class='List-item'> <a href=\"" +
+          "<div class='Item-container'> <div class='List-item-container'> <div class='List-item'> <a href=\"" +
           sortedArr[i][1][0] +
           '" target="_blank">' +
           sortedArr[i][1][0] +
-          '</a> </div> <span class="star" style="color:' +
+          '</a> </div> <span class="arrow"> &#8681; </span> </div> <span class="star" style="color:' +
           sortedArr[i][1][2] +
           ';" data-timeId=' +
           sortedArr[i][0] +
-          '>&#9734;&ensp;</span> <button class="remove" data-timeId=' +
+          '>&#9733;&ensp;</span> <button class="remove" data-timeId=' +
           sortedArr[i][0] +
           "> x</button> </div>";
       } else {
         currentItem +=
-          '<div class="Item-container"> <div class="List-item">' +
+          '<div class="Item-container"> <div class="List-item-container"> <div class="List-item">' +
           sortedArr[i][1][0] +
-          '</div> <span class="star" style="color:' +
+          '</div> <span class="arrow"> &#8681; </span> </div> <span class="star" style="color:' +
           sortedArr[i][1][2] +
           ';" data-timeid=' +
           sortedArr[i][0] +
-          '>&#9734;&ensp;</span> <button class="remove" data-timeid=' +
+          '>&#9733;&ensp;</span> <button class="remove" data-timeid=' +
           sortedArr[i][0] +
           "> x</button> </div>";
       }
@@ -50,26 +50,26 @@ document.addEventListener("DOMContentLoaded", function() {
         sortedArr[i][1][2] === "red"
       ) {
         currentItem +=
-          "<div class='Item-container'> <div class='List-item'> <a href=\"" +
+          "<div class='Item-container'> <div class='List-item-container'> <div class='List-item'> <a href=\"" +
           sortedArr[i][1][0] +
           '" target="_blank">' +
           sortedArr[i][1][0] +
-          '</a> </div> <span class="star" style="color:' +
+          '</a> </div> <span class="arrow"> &#8681; </span> </div> <span class="star" style="color:' +
           sortedArr[i][1][2] +
           ';" data-timeid=' +
           sortedArr[i][0] +
-          '>&#9734;&ensp;</span> <button class="remove" data-timeid=' +
+          '>&#9733;&ensp;</span> <button class="remove" data-timeid=' +
           sortedArr[i][0] +
           "> x</button> </div>";
       } else if (sortedArr[i][1][2] === "red") {
         currentItem +=
-          '<div class="Item-container"> <div class="List-item">' +
+          '<div class="Item-container"> <div class="List-item-container"> <div class="List-item">' +
           sortedArr[i][1][0] +
-          '</div> <span class="star" style="color:' +
+          '</div> <span class="arrow"> &#8681; </span> </div> <span class="star" style="color:' +
           sortedArr[i][1][2] +
           ';" data-timeid=' +
           sortedArr[i][0] +
-          '>&#9734;&ensp;</span> <button class="remove" data-timeid=' +
+          '>&#9733;&ensp;</span> <button class="remove" data-timeid=' +
           sortedArr[i][0] +
           "> x</button></div>";
       }
@@ -111,6 +111,23 @@ document.addEventListener("DOMContentLoaded", function() {
         }
       });
     }
+
+    let expandElement = document.getElementsByClassName("arrow");
+
+    for (let i = 0; i < expandElement.length; i++) {
+      expandElement[i].addEventListener("click", function() {
+        console.log(expandElement[i].parentNode.className)
+        if (expandElement[i].parentNode.className === "List-item-container"){
+          expandElement[i].parentNode.className = "Expanded-list-item-container"
+          console.log('First', expandElement[i].parentNode.className)
+        }
+        else{
+          expandElement[i].parentNode.className = "List-item-container"
+          console.log('Second', expandElement[i].parentNode.className)
+        }
+      });
+    }
+
 
 
 
