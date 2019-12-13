@@ -128,6 +128,19 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     }
 
+    
+    const form = document.getElementById('item-form');
+    const log = document.getElementById('log');
+    const addedItem = document.getElementById('add-item').value;
+
+    function logSubmit(event) {
+      log.textContent = `Form Submitted! Time stamp: ${event.timeStamp} ${addedItem}`;
+      console.log(addedItem)
+      event.preventDefault();
+    }
+
+    form.addEventListener('submit', logSubmit);
+
 
 
 

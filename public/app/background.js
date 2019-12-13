@@ -4,6 +4,7 @@ function pageOnClick (info, tab){
     console.log("tab: " + JSON.stringify(tab));
     let date1 = new Date();
     let seconds1 = date1.getTime().toString();
+    
     chrome.storage.sync.set({[seconds1]: [info["pageUrl"], 'page', 'black']}, function() {
       console.log('pageUrl is set to ' + info["pageUrl"]);
     });

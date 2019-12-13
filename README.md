@@ -14,3 +14,4 @@ https://www.youtube.com/watch?v=HrZeZ5-w0Mk&feature=youtu.be
 
 Description: Right click text blocks and links and add them to the extension using context menu options.
 
+

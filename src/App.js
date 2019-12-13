@@ -1,7 +1,11 @@
 import React, {Component} from 'react';
 import './App.css';
+import { connect } from "react-redux";
+import { getStorageInfo } from "./redux/storageInfo";
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 
 
 
@@ -9,10 +13,21 @@ class App extends Component {
   constructor () {
     super()
     this.state = {
-      items: []
+      formValue: '',
+      storage: {}
     }
+    this.handleChange = this.handleChange.bind(this)
   }
 
+  componentDidMount(){
+
+    this.props.getStorageInfo()
+
+  }
+  handleChange(evt){
+    this.setState({formValue: evt.target.value})
+    console.log(this.state.formValue)
+  }
   render() {
     return (
 
@@ -20,7 +35,11 @@ class App extends Component {
         <Tabs defaultActiveKey="allItems" id="uncontrolled-tab-example">
           <Tab eventKey="allItems" title="All Items">
             <div id="title" class="title1">Saved Items</div>
-            <div id="itemList" class="list-group"></div>
+            {/* <div id="itemList" class="list-group"></div> */}
+            {Object.keys(this.props.storageInfo).map(key => (
+              <div id="itemList" class="list-group">{this.props.storageInfo[key][0]}</div>
+            )
+            )}
           </Tab>
           <Tab eventKey="starred" title="Starred Items">
             <div id="starredTitle" class="title1">Starred Items</div>
@@ -28,27 +47,35 @@ class App extends Component {
             <div id='test3'></div>
           </Tab>
           <Tab eventKey="test" title="Enter Items">
-            <div id="test1" class="title1">Enter a new item below</div>
-            <form id="item-form">
-              <label>
-                <input type="text" name="name" />
-              </label>
-              <input type="submit" value="Submit" />
-            </form>
+            <Form id="item-form">
+              {/* <Form.Label>Password</Form.Label> */}
+              <Form.Control id='add-item' value='ok@@' ref='hello1' onChange={(evt) => this.handleChange(evt)} placeholder="Enter new item here" />
+              <Button variant="primary" type="submit" >
+                Submit
+              </Button>
+            </Form>
+            <p id="log"></p>
           </Tab>
         </Tabs>
-        <script src="../public/app/script.js"></script>
       </div>
     );
   }
 }
 
-{/* <div class="list-group">
-<a href="#" class="list-group-item list-group-item-action"> Cras justo odio </a>
-<a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-<a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-<a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-<a href="#" class="list-group-item list-group-item-action">Vestibulum at eros</a>
-</div> */}
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    getStorageInfo: () => dispatch(getStorageInfo()),
+  };
+};
+
+const mapStateToProps = state => {
+  return {
+    storageInfo: state.storageInfo,
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
