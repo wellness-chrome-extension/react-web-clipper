@@ -3,6 +3,8 @@
 
 Right click and save your favorite parts of the internet in this handy, simple chrome extension.
 
+View in chrome web store here:
+https://chrome.google.com/webstore/detail/web-clipper/pnkophekijnfmnoenbakmfjjhfjfncfn
 
 Version 1 (11/12/2019):
 
