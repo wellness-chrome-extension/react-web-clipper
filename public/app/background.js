@@ -5,11 +5,11 @@ function pageOnClick (info, tab){
     let date1 = new Date();
     let seconds1 = date1.getTime().toString();
     
-    chrome.storage.sync.set({[seconds1]: [info["pageUrl"], 'page', 'black']}, function() {
+    chrome.storage.sync.set({[seconds1]: {info: info["pageUrl"], context: 'page', starred: false}}, function() {
       console.log('pageUrl is set to ' + info["pageUrl"]);
     });
     chrome.storage.sync.get([seconds1], function(result) {
-      console.log(result[seconds1][0] + ' is set to ' + result[seconds1][1] + 'and the timeId is ' + seconds1);
+      console.log(result[seconds1]['context'] + ' is set to ' + result[seconds1]['info'] + ' and the timeId is ' + seconds1);
     });
   }
 
@@ -19,11 +19,11 @@ function pageOnClick (info, tab){
     console.log("tab: " + JSON.stringify(tab));
     let date1 = new Date();
     let seconds1 = date1.getTime().toString();
-    chrome.storage.sync.set({[seconds1]: [info["selectionText"], 'selection', 'black']}, function() {
+    chrome.storage.sync.set({[seconds1]: {info: info["selectionText"], context: 'selection', starred: false}}, function() {
       console.log('selectionText is set to ' + info["selectionText"]);
     });
     chrome.storage.sync.get([seconds1], function(result) {
-      console.log(result[seconds1][0] + ' is set to ' + result[seconds1][1] + 'and the timeId is ' + seconds1);
+      console.log(result[seconds1]['context'] + ' is set to ' + result[seconds1]['info'] + ' and the timeId is ' + seconds1);
     });
   }
 
@@ -33,11 +33,11 @@ function pageOnClick (info, tab){
     console.log("tab: " + JSON.stringify(tab));
     let date1 = new Date();
     let seconds1 = date1.getTime().toString();
-    chrome.storage.sync.set({[seconds1]: [info["linkUrl"], 'link', 'black']}, function() {
+    chrome.storage.sync.set({[seconds1]: {info: info["linkUrl"], context: 'link', starred: false}}, function() {
       console.log('link is set to ' + info["linkUrl"]);
     });
     chrome.storage.sync.get([seconds1], function(result) {
-      console.log(result[seconds1][0] + ' is set to ' + result[seconds1][1] + 'and the timeId is ' + seconds1);
+      console.log(result[seconds1]['context'] + ' is set to ' + result[seconds1]['info'] + ' and the timeId is ' + seconds1);
     });
   }
 
@@ -47,11 +47,11 @@ function pageOnClick (info, tab){
     console.log("tab: " + JSON.stringify(tab));
     let date1 = new Date();
     let seconds1 = date1.getTime().toString();
-    chrome.storage.sync.set({[seconds1]: [info["srcUrl"], 'image', 'black']}, function() {
+    chrome.storage.sync.set({[seconds1]: {info: info["srcUrl"], context: 'image', starred: false}}, function() {
       console.log('image is set to ' + info["srcUrl"]);
     });
     chrome.storage.sync.get([seconds1], function(result) {
-      console.log(result[seconds1][0] + ' is set to ' + result[seconds1][1] + 'and the timeId is ' + seconds1);
+      console.log(result[seconds1]['context'] + ' is set to ' + result[seconds1]['info'] + ' and the timeId is ' + seconds1);
     });
   }
 
@@ -61,11 +61,11 @@ function pageOnClick (info, tab){
     console.log("tab: " + JSON.stringify(tab));
     let date1 = new Date();
     let seconds1 = date1.getTime().toString();
-    chrome.storage.sync.set({[seconds1]: [info["srcUrl"], 'audio', 'black']}, function() {
+    chrome.storage.sync.set({[seconds1]: {info: info["srcUrl"], context: 'audio', starred: false}}, function() {
       console.log('audio is set to ' + info["srcUrl"]);
     });
-    chrome.storage.sync.get([seconds1, 'type'], function(result) {
-      console.log(result[seconds1][0] + ' is set to ' + result[seconds1][1] + 'and the timeId is ' + seconds1);
+    chrome.storage.sync.get([seconds1], function(result) {
+      console.log(result[seconds1]['context'] + ' is set to ' + result[seconds1]['info'] + ' and the timeId is ' + seconds1);
     });
   }
 

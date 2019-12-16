@@ -86,6 +86,13 @@
   /* height: 30px */
 }
 
+
 .List-group-item{
-  padding: 2px
+  width: 410px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 10px
+  
 }
+

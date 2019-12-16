@@ -7,12 +7,19 @@ export const setStorageInfo = storageInformation => ({
   storageInformation
 });
 
-export const getStorageInfo = () => async dispatch => {
+export const setStorageConfig = () => async dispatch => {
   try {
     Storage.configure({
       scope: "sync" // or "local"
     });
+    console.log('in config thunk')
+  } catch (err) {
+    console.error(err);
+  }
+}
 
+export const getStorageInfo = () => async dispatch => {
+  try {
     Storage.load(function() {
       Storage.set("installtime", Date.now());
       // set storage keys
@@ -23,6 +30,22 @@ export const getStorageInfo = () => async dispatch => {
       // get a storage key
       let storageObj = Storage.get(null);
       dispatch(setStorageInfo(storageObj))
+    });
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+
+export const setStarredItem = (itemInfo) => async dispatch => {
+  try {
+    Storage.load(function() {
+      Storage.set({
+        [itemInfo.key]: {info: itemInfo.info, context: itemInfo.context, starred: !itemInfo.starred},
+      });
+      console.log('star key in thunk', itemInfo)
+
+      console.log('here1!1!')
     });
   } catch (err) {
     console.error(err);

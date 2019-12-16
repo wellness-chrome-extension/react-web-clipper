@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import CompleteItemsList from './CompleteItemsList'
-import '../App.css';
+// import '../App.css';
 import { connect } from "react-redux";
 import { getStorageInfo } from "../redux/storageInfo";
+import { setStorageConfig } from "../redux/storageInfo";
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 import Form from 'react-bootstrap/Form'
@@ -18,6 +19,7 @@ class App extends Component {
   }
 
   componentDidMount(){
+    this.props.setStorageConfig()
     this.props.getStorageInfo()
   }
 
@@ -29,7 +31,7 @@ class App extends Component {
             <div id="title" class="title1">Saved Items</div>
 
             {/* <div id="itemList" class="list-group"></div> */}
-            <CompleteItemsList />
+          <CompleteItemsList />
           </Tab>
           <Tab eventKey="starred" title="Starred Items">
             <div id="starredTitle" class="title1">Starred Items</div>
@@ -56,6 +58,7 @@ class App extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     getStorageInfo: () => dispatch(getStorageInfo()),
+    setStorageConfig: () => dispatch(setStorageConfig())
   };
 };
 

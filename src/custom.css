@@ -1,0 +1,22 @@
+
+
+.List-container{
+    padding: 2px 2px 2px 10px;
+    padding-left: 10px;
+    display: flex;
+}
+
+.delete-button{
+    font-size: 10px;
+    padding: 2px
+}
+
+.star-button{
+    font-size: 10px;
+    padding: 2px
+}
+
+.expand-button{
+    font-size: 10px;
+    padding: 2px
+}
