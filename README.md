@@ -6,11 +6,11 @@ Right click and save your favorite parts of the internet in this handy, simple c
 View in chrome web store here:
 https://chrome.google.com/webstore/detail/web-clipper/pnkophekijnfmnoenbakmfjjhfjfncfn
 
-Version 1 (11/12/2019):
+Version 12/16/2019:
 
-https://www.youtube.com/watch?v=HrZeZ5-w0Mk&feature=youtu.be
+https://youtu.be/V2TJXG3oHjI
 
-[![Watch the video](./screencapture.png)](https://youtu.be/HrZeZ5-w0Mk)
+[![Watch the video](./screencapture.png)](https://youtu.be/V2TJXG3oHjI)
 
 Description: Right click text blocks and links and add them to the extension using context menu options.
 
