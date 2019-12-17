@@ -2,8 +2,8 @@
   "manifest_version": 2,
 
   "name": "Web Clipper",
-  "description": "This extension is a starting point to create a real Chrome extension",
-  "version": "1.0.0",
+  "description": "Save your favorite parts of the internet using this handy web clipper!",
+  "version": "1.0.1",
 
   "browser_action": {
     "default_popup": "index.html",

@@ -22,16 +22,12 @@ class SingleItem extends Component {
   }
 
   starClick() {
-    console.log("here in starclick");
     this.props.setStarredItem(this.props.itemInfo);
-    console.log("star key", this.props.itemInfo.key);
     this.props.getStorageInfo();
   }
 
   removeClick() {
-    console.log("here in removeClick");
     this.props.removeItem(this.props.itemInfo);
-    console.log("remove key", this.props.itemInfo.key);
     this.props.getStorageInfo();
   }
 
@@ -46,8 +42,6 @@ class SingleItem extends Component {
 
 
   render() {
-    console.log("iteminfo!hey!", this.props.itemInfo);
-    console.log("key", this.props.itemInfo.key);
     let urlValues = ["page", "link", "image", "audio"];
     let linkCondition = urlValues.includes(this.props.itemInfo.context);
     let expandedClass = this.state.expanded ? "Expanded-list-group-item" : "List-group-item"
