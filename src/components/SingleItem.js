@@ -1,11 +1,14 @@
 import React, { Component } from "react";
+
 // import "../App.css";
 import { connect } from "react-redux";
 import { getStorageInfo } from "../redux/storageInfo";
 import { setStarredItem } from "../redux/storageInfo";
+import { removeItem } from "../redux/storageInfo";
+
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
-import ButtonGroup from "react-bootstrap/ButtonGroup"
+import ButtonGroup from "react-bootstrap/ButtonGroup";
 
 class SingleItem extends Component {
   constructor() {
@@ -13,40 +16,99 @@ class SingleItem extends Component {
     this.state = {
       expanded: false
     };
-    this.starClick = this.starClick.bind(this)
+    this.starClick = this.starClick.bind(this);
+    this.removeClick = this.removeClick.bind(this);
+    this.expandHandleClick = this.expandHandleClick.bind(this);
   }
 
   starClick() {
-    console.log('here in starclick')
-    this.props.setStarredItem(this.props.itemInfo)
-    console.log('star key', this.props.itemInfo.key)
-    this.props.getStorageInfo()
+    console.log("here in starclick");
+    this.props.setStarredItem(this.props.itemInfo);
+    console.log("star key", this.props.itemInfo.key);
+    this.props.getStorageInfo();
   }
 
+  removeClick() {
+    console.log("here in removeClick");
+    this.props.removeItem(this.props.itemInfo);
+    console.log("remove key", this.props.itemInfo.key);
+    this.props.getStorageInfo();
+  }
+
+  expandHandleClick() {
+    if (this.state.expanded) {
+      this.setState({expanded: false})
+    }
+    else{
+      this.setState({expanded: true})
+    }
+  }
+
+
   render() {
-    console.log('iteminfo!hey!', this.props.itemInfo)
-    console.log('key', this.props.itemInfo.key)
+    console.log("iteminfo!hey!", this.props.itemInfo);
+    console.log("key", this.props.itemInfo.key);
+    let urlValues = ["page", "link", "image", "audio"];
+    let linkCondition = urlValues.includes(this.props.itemInfo.context);
+    let expandedClass = this.state.expanded ? "Expanded-list-group-item" : "List-group-item"
 
     return (
       <ListGroup>
         <ListGroup.Item className="List-container">
-          <span className="List-group-item">{this.props.itemInfo.info}</span>
-          <ButtonGroup aria-label="Basic example">
-            <Button variant="outline-primary" className="expand-button">
+          {linkCondition ? (
+            <span className={expandedClass}>
+              <a href={this.props.itemInfo.info}>
+                {this.props.itemInfo.info}
+              </a>
+            </span>
+          ) : (
+            <span className={expandedClass}>
+              {this.props.itemInfo.info}
+            </span>
+          )}
+          <ButtonGroup className="Button-group" aria-label="Basic example">
+            <Button variant="outline-primary" className="expand-button" onClick={() => this.expandHandleClick()}>
+              {this.state.expanded ? 
+              <span role="img" aria-label="expand">
+                ⬆️
+              </span>
+              :
               <span role="img" aria-label="expand">
                 ⬇️
-              </span> 
+              </span>}
             </Button>
-            <Button variant={this.props.itemInfo.starred ? "primary" : "outline-primary"} className="star-button" onClick={() => this.starClick()}>
+            <Button
+              variant={
+                this.props.itemInfo.starred ? "primary" : "outline-primary"
+              }
+              className="star-button"
+              onClick={() => this.starClick()}
+            >
               <span role="img" aria-label="star">
                 ⭐
-              </span> 
+              </span>
             </Button>
-            <Button variant="outline-primary" className="delete-button">
+            {this.props.itemInfo.starred ?
+            <Button
+              variant="outline-primary"
+              className="delete-button"
+              onClick={() => this.removeClick()}
+              disabled
+            >
               <span role="img" aria-label="cross">
                 ❌
               </span>
             </Button>
+            :
+            <Button
+              variant="outline-primary"
+              className="delete-button"
+              onClick={() => this.removeClick()}
+            >
+              <span role="img" aria-label="cross">
+                ❌
+              </span>
+            </Button>}
           </ButtonGroup>
         </ListGroup.Item>
       </ListGroup>
@@ -63,7 +125,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getStorageInfo: () => dispatch(getStorageInfo()),
-    setStarredItem: (itemKey) => dispatch(setStarredItem(itemKey))
+    setStarredItem: itemInfo => dispatch(setStarredItem(itemInfo)),
+    removeItem: itemInfo => dispatch(removeItem(itemInfo))
   };
 };
 

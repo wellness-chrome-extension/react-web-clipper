@@ -95,4 +95,24 @@
   margin-right: 10px
   
 }
+.Button-group {
+  height: 24px
+}
 
+.Expanded-list-group-item{
+  /* display: block; */
+  width: 410px;
+  white-space: wrap;
+  overflow: hidden;
+  /* white-space: normal; */
+  /* overflow: hidden;
+  text-overflow: ellipsis; */
+  margin-right: 10px;
+  /* display: flex; */
+  display: inline-block;
+}
+
+.Expanded-list-group-item > a {
+  width: 410px;
+  display: inline-block;
+}

@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import SingleItem from "./SingleItem";
 import { connect } from "react-redux";
 
-class CompleteItemsList extends Component {
+class StarredItemsList extends Component {
   constructor() {
     super();
     this.state = {};
@@ -14,7 +14,7 @@ class CompleteItemsList extends Component {
         {Object.keys(this.props.storageInfo)
           .filter(
             key =>
-              typeof Number(key) === "number" && this.props.storageInfo[key].info
+              typeof Number(key) === "number" && this.props.storageInfo[key].info && this.props.storageInfo[key].starred
           ).sort((a, b) => b - a)
           .map(key => {
             //   <div className="Item-container">
@@ -41,4 +41,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(CompleteItemsList);
+export default connect(mapStateToProps)(StarredItemsList);
