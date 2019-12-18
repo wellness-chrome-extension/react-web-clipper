@@ -51,7 +51,7 @@ class SingleItem extends Component {
         <ListGroup.Item className="List-container">
           {linkCondition ? (
             <span className={expandedClass}>
-              <a href={this.props.itemInfo.info}>
+              <a className="Link1" href={this.props.itemInfo.info}>
                 {this.props.itemInfo.info}
               </a>
             </span>

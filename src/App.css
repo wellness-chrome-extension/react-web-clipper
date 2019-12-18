@@ -20,7 +20,7 @@
 }
 
 .App-link {
-  color: #09d3ac;
+  color: #e6faf6;
 }
 
 
@@ -116,3 +116,8 @@
   width: 410px;
   display: inline-block;
 }
+
+.submit-item{
+  margin-left: 10px
+}
+

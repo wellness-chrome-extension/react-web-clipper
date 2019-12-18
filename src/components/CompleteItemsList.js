@@ -11,6 +11,7 @@ class CompleteItemsList extends Component {
   render() {
     return (
       <div>
+
         {Object.keys(this.props.storageInfo)
           .filter(
             key =>

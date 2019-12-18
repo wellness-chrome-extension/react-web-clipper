@@ -59,16 +59,17 @@ class App extends Component {
             <StarredItemsList />
           </Tab>
           <Tab eventKey="test" title="Enter Items">
-            <Form id="item-form" onSubmit={(evt) => this.handleSubmit(evt)}>
+            <Form className="submit-item" id="item-form" onSubmit={(evt) => this.handleSubmit(evt)}>
               {/* <Form.Label>Password</Form.Label> */}
               <Form.Control id='add-item' placeholder="Enter new item here" value={this.state.enteredItem} onChange={(evt) => this.enteredItemHandleChange(evt)} />
               <Button variant="primary" type="submit" >
                 Submit
               </Button>
             </Form>
-            {this.state.submitted ? <div>New item submitted!</div> : <div />}
+            {this.state.submitted ? <div className="submit-item">New item submitted!</div> : <div />}
           </Tab>
         </Tabs>
+
       </div>
     );
   }
