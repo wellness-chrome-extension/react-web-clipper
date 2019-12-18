@@ -7,7 +7,7 @@ export const setStorageInfo = storageInformation => ({
   storageInformation
 });
 
-export const setStorageConfig = () => async dispatch => {
+export const setStorageConfig = () => dispatch => {
   try {
     Storage.configure({
       scope: "sync" // or "local"
@@ -17,7 +17,7 @@ export const setStorageConfig = () => async dispatch => {
   }
 };
 
-export const getStorageInfo = () => async dispatch => {
+export const getStorageInfo = () => dispatch => {
   try {
     Storage.load(function() {
       Storage.set("installtime", Date.now());
@@ -33,7 +33,7 @@ export const getStorageInfo = () => async dispatch => {
   }
 };
 
-export const setStarredItem = itemInfo => async dispatch => {
+export const setStarredItem = itemInfo => dispatch => {
   try {
     Storage.load(function() {
       Storage.set({
@@ -49,7 +49,7 @@ export const setStarredItem = itemInfo => async dispatch => {
   }
 };
 
-export const removeItem = itemInfo => async dispatch => {
+export const removeItem = itemInfo => dispatch => {
   try {
     Storage.load(function() {
       Storage.set({
@@ -62,7 +62,7 @@ export const removeItem = itemInfo => async dispatch => {
 };
 
 
-export const addItem = (itemInfo) => async dispatch => {
+export const addItem = (itemInfo) => dispatch => {
   try {
     let date1 = new Date();
     let seconds1 = date1.getTime().toString();
